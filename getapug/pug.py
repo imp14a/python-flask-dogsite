@@ -11,4 +11,4 @@ def pugs():
 
 @bp.route('/')
 def home():
-    return "<h1>Hi from Packer + Ansible!</h1>"
+    return "<h1>Hi from Packer + Ansible GDC!</h1>"
