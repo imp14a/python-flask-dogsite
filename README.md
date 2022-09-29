@@ -8,19 +8,22 @@ This is part of a packer sample, you can find the packer build here: https://git
 - apt install python3.9-venv
 
 ## Create enviroment
-~~~
+```
 python3 -m venv venv
 . venv/bin/activate
 python3 -m pip install Flask
-~~~
-
-## Install requirements
-~~~
-pip3 install requirements.txt
-~~~
+pip freeze > requirements.txt
+```
 
 ## Run
-~~~ 
+´´´
+pip install -r requirements.txt
 export FLASK_APP=getapug
-flask run
-~~~ 
+flask run --debug
+flask run --host=0.0.0.0
+´´´
+
+## Docker build and run
+´´´
+docker image build -t pugsite .
+´´´
