@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dogsite-dogs-deployment
+  labels:
+    app: dogsite-dogs
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dogsite-dogs
+  template:
+    metadata:
+      labels:
+        app: dogsite-dogs
+    spec:
+      containers:
+      - name: dogsite-dogs
+        image: us-central1-docker.pkg.dev/lgke-app-gke/docker/dogsite-dogs-image:latest
+        ports:
+        - containerPort: 8443
+          name: https-dogs-svc
