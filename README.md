@@ -16,14 +16,13 @@ pip freeze > requirements.txt
 ```
 
 ## Run
-´´´
+```
 pip install -r requirements.txt
 export FLASK_APP=getapug
 flask run --debug
 flask run --host=0.0.0.0
-´´´
+```
 
 ## Docker build and run
-´´´
+```
 docker image build -t pugsite .
-´´´
