@@ -2,10 +2,10 @@ import json
 from flask import Blueprint,Response,jsonify,current_app
 import datetime
 
-bp = Blueprint("pug", __name__)
+bp = Blueprint("dogs", __name__)
 
-@bp.route('/pugs')
-def pugs():
+@bp.route('/dogs')
+def dogs():
     js = [ { "name" : "chip", "age" : "5y" } ]
     return Response(json.dumps(js),  mimetype='application/json')
 

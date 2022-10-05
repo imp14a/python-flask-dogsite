@@ -1,8 +1,8 @@
 from flask import Flask
-from getapug import pug
+from bp import dogs
 
 app = Flask(__name__)
-app.register_blueprint(pug.bp)
+app.register_blueprint(dogs.bp)
 
 @app.route("/error")
 def error_page():
@@ -14,9 +14,7 @@ def error_page():
     
 if __name__ == "__main__":
     app.run(
-        debug=True,
         host='0.0.0.0',
-        port=8080
-        #port=8443
-        #ssl_context='adhoc'
+        port=8443,
+        ssl_context='adhoc'
         )
