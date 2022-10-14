@@ -1,8 +1,6 @@
 from flask import Flask
 from bp import dogs
-import logging
-
-logger = logging.getLogger(__name__)
+from flask.logging import default_handler
 from logging.config import dictConfig
 
 dictConfig({
@@ -21,8 +19,12 @@ dictConfig({
     }
 })
 
+
+
 app = Flask(__name__)
+app.logger.removeHandler(default_handler)
 app.register_blueprint(dogs.bp)
+
 
 @app.route("/error")
 def error_page():
