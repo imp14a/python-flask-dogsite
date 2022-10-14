@@ -2,8 +2,7 @@
 import google.cloud.logging
 import logging
 
-text = "init"
-logging.warning(text)
+
 
 
 # Instantiates a client
@@ -17,7 +16,8 @@ client.setup_logging()
 
 #if __name__ == "__main__":
 #    app.app.run(host="0.0.0.0",port="8080")
-
+text = "init"
+logging.warning(text)
 # Python 3 server example
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import time
