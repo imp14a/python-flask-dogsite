@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='dogs-ms',
-    packages=['dogs-ms'],
+    packages=[],
     install_requires=[
         'flask',
         'pyopenssl'

@@ -18,12 +18,12 @@ pip freeze > requirements.txt
 ## to run
 ```
 pip install -r requirements.txt
-python __init__.py
+gunicorn --bind 0.0.0.0:5000 wsgi:app
 ```
 
 ## Docker build and run
 ```
 docker image build -t dogs-ms .
 # push to gcp
-gcloud builds submmit .
+gcloud builds submit .
 ```
