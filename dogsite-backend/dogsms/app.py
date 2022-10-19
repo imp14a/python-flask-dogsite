@@ -1,30 +1,18 @@
 from flask import Flask
 from bp import dogs
-from flask.logging import default_handler
-from logging.config import dictConfig
+import logging
+import google.cloud.logging
 
-dictConfig({
-    'version': 1,
-    'formatters': {'default': {
-        'format': '%(levelname)s in %(module)s: %(message)s',
-    }},
-    'handlers': {'wsgi': {
-        'class': 'logging.StreamHandler',
-        'stream': 'ext://flask.logging.wsgi_errors_stream',
-        'formatter': 'default'
-    }},
-    'root': {
-        'level': 'DEBUG',
-        'handlers': ['wsgi']
-    }
-})
-
-
+client = google.cloud.logging.Client()
+client.setup_logging()
 
 app = Flask(__name__)
-app.logger.removeHandler(default_handler)
-app.register_blueprint(dogs.bp)
 
+gunicorn_logger = logging.getLogger('gunicorn.error')
+app.logger.handlers = gunicorn_logger.handlers
+app.logger.setLevel(gunicorn_logger.level)
+
+app.register_blueprint(dogs.bp)
 
 @app.route("/error")
 def error_page():

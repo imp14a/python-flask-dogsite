@@ -18,7 +18,7 @@ pip freeze > requirements.txt
 ## to run
 ```
 pip install -r requirements.txt
-gunicorn --bind 0.0.0.0:5000 wsgi:app
+gunicorn --bind 0.0.0.0:8080 app:app
 ```
 
 ## Docker build and run
