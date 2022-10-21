@@ -1,12 +1,10 @@
 from flask import Flask
 from bp import dogs
 import logging
-import google.cloud.logging
-
-client = google.cloud.logging.Client()
-client.setup_logging()
 
 app = Flask(__name__)
+
+
 
 gunicorn_logger = logging.getLogger('gunicorn.error')
 app.logger.handlers = gunicorn_logger.handlers
