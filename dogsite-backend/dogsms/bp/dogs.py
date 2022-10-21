@@ -3,6 +3,7 @@ import logging
 from flask import Blueprint,Response,jsonify,current_app
 from flask_api import status
 import datetime
+import util.metrics as metric
 
 logger = logging.getLogger(__name__)
 
@@ -19,6 +20,7 @@ def dogs():
 def dogsserror():
     current_app.logger.error('bad_request: dogs error')
     js =  { "error" : "bad request" } 
+    metric.exportAndRecordError("http_400");
     return Response(json.dumps(js),  mimetype='application/json',status = status.HTTP_400_BAD_REQUEST)
 
 @bp.route('/')

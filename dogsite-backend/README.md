@@ -18,7 +18,7 @@ pip freeze > requirements.txt
 ## to run
 ```
 pip install -r requirements.txt
-gunicorn --bind 0.0.0.0:8080 app:app
+gunicorn --bind 0.0.0.0:8080 app:app --log-level=debug --workers=4 --threads=4
 ```
 
 ## Docker build and run
