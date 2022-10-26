@@ -1,10 +1,12 @@
 from flask import Flask, request
+import uuid
 
 app = Flask(__name__)
 
 
 owners = [
     {
+        "id" : str(uuid.uuid4())[:7],
         "name": "Miguel Mont",
         "personal_data": [
             {
@@ -54,4 +56,4 @@ def get_data_of_owner(name):
     return {"message": "Owner not found"}, 404
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port='4040')
